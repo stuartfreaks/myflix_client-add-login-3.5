@@ -3,8 +3,10 @@ import axios from 'axios';
 
 
 import { LoginView } from '../LoginView/login-view';
+import { SignupView } from '../SignupView/signup-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/MovieView';
+
 
 
 export class MainView extends React.Component {
@@ -35,11 +37,11 @@ export class MainView extends React.Component {
   onLoggedIn(authData) {
     console.log(authData);
     this.props.setUser({
-      user: authData.user.Username
+      user: authData.user.username
     });
   
     localStorage.setItem('token', authData.token);
-    localStorage.setItem('user', authData.user.Username);
+    localStorage.setItem('user', authData.user.username);
     this.getMovies(authData.token);
   }
   getMovies(token) {
@@ -69,16 +71,17 @@ export class MainView extends React.Component {
 
 
   render() {
-    const { movies, selectedMovie, user } = this.state;
+    const { movies, selectedMovie, user, register } = this.state;
    console.log(movies)
 
- 
+  
 
    if (!user) {
      return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
 
    }
    
+   if (!register) return (<SignupView onRegistration={(register) => this.onRegistration(register)}/>);
   
     if (movies.length === 0) return <div className="main-view">The list is empty!</div>;
   

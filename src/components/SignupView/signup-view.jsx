@@ -6,7 +6,36 @@ export const SignupView = () => {
   const [email, setEmail] = useState("");
   const [birthday, setBirthday] = useState("");
 
-  const handleSubmit = (event) => {};
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const data =  {
+      username: username, 
+      Email: email,
+      password: password,
+      Birthday: birthday
+    }
+
+   fetch("https://https://fellini-api.onrender.com/users", {
+            method: "POST", 
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data),
+        }).then((response)=>{
+            if(response.ok){
+                console.log("success");
+                alert("signup successful");
+                window.location.reload();
+                // onLoggedIn(username);
+            }else{
+                alert("singnup failed")
+                console.log("signup fail")
+                // onLoggedIn(username);
+            }
+        })
+        ;
+    };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -47,7 +76,7 @@ export const SignupView = () => {
           required
         />
       </label>
-      <button type="submit">Submit</button>
+      <button type="submit" className="registerButton">Register</button>
     </form>
   );
 };

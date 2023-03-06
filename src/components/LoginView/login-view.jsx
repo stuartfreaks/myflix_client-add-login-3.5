@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 
 
 
+
+
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
@@ -14,6 +16,25 @@ export function LoginView(props) {
     /* then call props.onLoggedIn(username) */
     props.onLoggedIn(username);
 };
+  const data = {
+    acess: username,
+    secret: password
+  };
+
+  fetch('https://openlibrary.org/account/login.json', {
+    method: "POST", 
+    body: JSON.stringify(data)
+  }).then((response) => {
+    if (response.ok) {
+      onLoggedIn(username);
+    } else {
+      alert("Login Failed");
+    }
+  });
+
+  
+  
+
   
 
   return (
@@ -28,6 +49,11 @@ export function LoginView(props) {
       </label>
       
       <button type="submit" onClick={handleSubmit}>Submit</button>
+
+      
+    
     </form>
+ 
+
   );
 }
