@@ -1,40 +1,30 @@
 import{ useState } from "react";
 
-export const SignupView = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [birthday, setBirthday] = useState("");
+export function RegistrationView (props) {
+  const [ username, setUsername ] = useState('');
+  const [ password, setPassword ] = useState('');
+  const [ email, setEmail ] = useState('');
+  const [ Birthday, setBirthday] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const data =  {
-      username: username, 
-      Email: email,
-      password: password,
-      Birthday: birthday
-    }
-
-   fetch("https://https://fellini-api.onrender.com/users", {
-            method: "POST", 
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data),
-        }).then((response)=>{
-            if(response.ok){
-                console.log("success");
-                alert("signup successful");
-                window.location.reload();
-                // onLoggedIn(username);
-            }else{
-                alert("singnup failed")
-                console.log("signup fail")
-                // onLoggedIn(username);
-            }
-        })
-        ;
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      axios.post('https://fellini-api.onrender.com/users', {
+        Username: username,
+        Password: password,
+        Email: email,
+        Birthday: Birthday
+      })
+      .then(response => {
+        const data = response.data;
+        console.log(data);
+        window.open('/', '_self'); // '_self' is necessary to open page in the current tab
+      })
+      .catch(e => {
+        console.log('error registering the user')
+      });
     };
 
   return (
@@ -79,4 +69,4 @@ export const SignupView = () => {
       <button type="submit" className="registerButton">Register</button>
     </form>
   );
-};
+}};

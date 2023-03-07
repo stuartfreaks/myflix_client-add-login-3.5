@@ -9,70 +9,62 @@ import { MovieView } from '../movie-view/MovieView';
 
 
 
-export class MainView extends React.Component {
+class MainView extends React.Component {
 
   constructor(){
     super();
     this.state = {
-      movies: [],
-      user: null, 
-      selectedMovie: null,
-    }
+      user: null
+    };
   }
 
-
-
-
-  componentDidMount() {
+  componentDidMount(){
     let accessToken = localStorage.getItem('token');
-    if (accessToken !== null) {
-      this.setState({
-        user: localStorage.getItem('user')
-      });
-      this.getMovies(accessToken);
-    }
-    
+      if (accessToken !== null) {
+        this.setState({
+          user: localStorage.getItem('user')
+        });
+        this.getMovies(accessToken);
+      }
+  }
+
+  getMovies(token) {
+    axios.get('https://fellini-api.onrender.com/login', {
+      headers: { Authorization: `Bearer ${token}`}
+    })
+    .then(response => {
+      // Assign the result to the state
+      this.props.setMovies(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
   onLoggedIn(authData) {
     console.log(authData);
-    this.props.setUser({
-      user: authData.user.username
+    this.setState({
+      user: authData.user.Username
     });
-  
+
     localStorage.setItem('token', authData.token);
-    localStorage.setItem('user', authData.user.username);
+    localStorage.setItem('user', authData.user.Username);
     this.getMovies(authData.token);
   }
-  getMovies(token) {
-    axios.get('https://fellini-api.onrender.com/movies', {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((response) => {
-        this.props.setMovies(response.data);
-        //assign the result to the state
-        // this.setState({
-        //   movies: response.data,
-        // });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
 
-  
-
-   setSelectedMovie(newSelectedMovie) {
+  onLoggedOut() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
     this.setState({
-      selectedMovie: newSelectedMovie,
+      user: null
     });
   }
 
 
 
   render() {
-    const { movies, selectedMovie, user, register } = this.state;
-   console.log(movies)
+    let { movies } = this.props;
+    let { user } = this.state;
 
   
 
@@ -99,5 +91,7 @@ export class MainView extends React.Component {
     );
   }
 }
+
+
 
 export default MainView;

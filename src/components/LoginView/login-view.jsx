@@ -1,8 +1,7 @@
 
 import React, { useState } from 'react';
 
-
-
+import axios from 'axios';
 
 
 export function LoginView(props) {
@@ -11,32 +10,20 @@ export function LoginView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password);
     /* Send a request to the server for authentication */
-    /* then call props.onLoggedIn(username) */
-    props.onLoggedIn(username);
+    axios.post('https://fellini-api.onrender.com/login', {
+      Username: username,
+      Password: password
+    })
+    .then(response => {
+      const data = response.data;
+      props.onLoggedIn(data);
+    })
+    .catch(e => {
+      console.log('no such user')
+    });
 };
-  const data = {
-    acess: username,
-    secret: password
-  };
-
-  fetch('https://openlibrary.org/account/login.json', {
-    method: "POST", 
-    body: JSON.stringify(data)
-  }).then((response) => {
-    if (response.ok) {
-      onLoggedIn(username);
-    } else {
-      alert("Login Failed");
-    }
-  });
-
   
-  
-
-  
-
   return (
     <form>
       <label>
@@ -57,3 +44,4 @@ export function LoginView(props) {
 
   );
 }
+
