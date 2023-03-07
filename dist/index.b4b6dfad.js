@@ -28922,117 +28922,114 @@ function RegistrationView(props) {
     const [Birthday, setBirthday] = (0, _react.useState)("");
     const handleSubmit = (event)=>{
         event.preventDefault();
-        const handleSubmit = (e)=>{
-            e.preventDefault();
-            axios.post("https://fellini-api.onrender.com/users", {
-                Username: username,
-                Password: password,
-                Email: email,
-                Birthday: Birthday
-            }).then((response)=>{
-                const data = response.data;
-                console.log(data);
-                window.open("/", "_self"); // '_self' is necessary to open page in the current tab
-            }).catch((e)=>{
-                console.log("error registering the user");
-            });
-        };
-        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
-            onSubmit: handleSubmit,
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                    children: [
-                        "Username:",
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                            type: "text",
-                            value: username,
-                            onChange: (e)=>setUsername(e.target.value),
-                            required: true,
-                            minLength: "3"
-                        }, void 0, false, {
-                            fileName: "src/components/SignupView/signup-view.jsx",
-                            lineNumber: 34,
-                            columnNumber: 9
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/SignupView/signup-view.jsx",
-                    lineNumber: 32,
-                    columnNumber: 7
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                    children: [
-                        "Password:",
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                            type: "password",
-                            value: password,
-                            onChange: (e)=>setPassword(e.target.value),
-                            required: true
-                        }, void 0, false, {
-                            fileName: "src/components/SignupView/signup-view.jsx",
-                            lineNumber: 44,
-                            columnNumber: 9
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/SignupView/signup-view.jsx",
-                    lineNumber: 42,
-                    columnNumber: 7
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                    children: [
-                        "Email:",
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                            type: "email",
-                            value: email,
-                            onChange: (e)=>setEmail(e.target.value),
-                            required: true
-                        }, void 0, false, {
-                            fileName: "src/components/SignupView/signup-view.jsx",
-                            lineNumber: 53,
-                            columnNumber: 9
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/SignupView/signup-view.jsx",
-                    lineNumber: 51,
-                    columnNumber: 7
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                    children: [
-                        "Birthday:",
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                            type: "date",
-                            value: birthday,
-                            onChange: (e)=>setBirthday(e.target.value),
-                            required: true
-                        }, void 0, false, {
-                            fileName: "src/components/SignupView/signup-view.jsx",
-                            lineNumber: 62,
-                            columnNumber: 9
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/SignupView/signup-view.jsx",
-                    lineNumber: 60,
-                    columnNumber: 7
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                    type: "submit",
-                    className: "registerButton",
-                    children: "Register"
-                }, void 0, false, {
-                    fileName: "src/components/SignupView/signup-view.jsx",
-                    lineNumber: 69,
-                    columnNumber: 7
-                }, this)
-            ]
-        }, void 0, true, {
-            fileName: "src/components/SignupView/signup-view.jsx",
-            lineNumber: 31,
-            columnNumber: 5
-        }, this);
+        axios.post("https://fellini-api.onrender.com/users", {
+            Username: username,
+            Password: password,
+            Email: email,
+            Birthday: Birthday
+        }).then((response)=>{
+            const data = response.data;
+            console.log(data);
+            window.open("/", "_self"); // '_self' is necessary to open page in the current tab
+        }).catch((e)=>{
+            console.log("error registering the user");
+        });
     };
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
+        onSubmit: handleSubmit,
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                children: [
+                    "Username:",
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        type: "text",
+                        value: username,
+                        onChange: (e)=>setUsername(e.target.value),
+                        required: true,
+                        minLength: "3"
+                    }, void 0, false, {
+                        fileName: "src/components/SignupView/signup-view.jsx",
+                        lineNumber: 32,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/SignupView/signup-view.jsx",
+                lineNumber: 30,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                children: [
+                    "Password:",
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        type: "password",
+                        value: password,
+                        onChange: (e)=>setPassword(e.target.value),
+                        required: true
+                    }, void 0, false, {
+                        fileName: "src/components/SignupView/signup-view.jsx",
+                        lineNumber: 42,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/SignupView/signup-view.jsx",
+                lineNumber: 40,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                children: [
+                    "Email:",
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        type: "email",
+                        value: email,
+                        onChange: (e)=>setEmail(e.target.value),
+                        required: true
+                    }, void 0, false, {
+                        fileName: "src/components/SignupView/signup-view.jsx",
+                        lineNumber: 51,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/SignupView/signup-view.jsx",
+                lineNumber: 49,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                children: [
+                    "Birthday:",
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        type: "date",
+                        value: birthday,
+                        onChange: (e)=>setBirthday(e.target.value),
+                        required: true
+                    }, void 0, false, {
+                        fileName: "src/components/SignupView/signup-view.jsx",
+                        lineNumber: 60,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/SignupView/signup-view.jsx",
+                lineNumber: 58,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                type: "submit",
+                className: "registerButton",
+                children: "Register"
+            }, void 0, false, {
+                fileName: "src/components/SignupView/signup-view.jsx",
+                lineNumber: 67,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/SignupView/signup-view.jsx",
+        lineNumber: 29,
+        columnNumber: 5
+    }, this);
 }
 _s(RegistrationView, "bQzYK6eSbg/gRAkArZgML2HgR1U=");
 _c = RegistrationView;

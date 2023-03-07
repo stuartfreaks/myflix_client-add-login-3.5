@@ -9,8 +9,6 @@ export function RegistrationView (props) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const handleSubmit = (e) => {
-      e.preventDefault();
       axios.post('https://fellini-api.onrender.com/users', {
         Username: username,
         Password: password,
@@ -69,4 +67,4 @@ export function RegistrationView (props) {
       <button type="submit" className="registerButton">Register</button>
     </form>
   );
-}};
+};
