@@ -27140,7 +27140,9 @@ class MainView extends (0, _reactDefault.default).Component {
     constructor(){
         super();
         this.state = {
-            user: null
+            user: null,
+            movies: [],
+            selectedMovie: null
         };
     }
     componentDidMount() {
@@ -27159,7 +27161,9 @@ class MainView extends (0, _reactDefault.default).Component {
             }
         }).then((response)=>{
             // Assign the result to the state
-            this.props.setMovies(response.data);
+            this.setState({
+                movies: response.data
+            });
         }).catch(function(error) {
             console.log(error);
         });
@@ -27180,29 +27184,28 @@ class MainView extends (0, _reactDefault.default).Component {
             user: null
         });
     }
+    setSelectedMovie(newSelectedMovie) {
+        this.setState({
+            selectedMovie: newSelectedMovie
+        });
+    }
     render() {
-        let { movies  } = this.props;
-        let { user  } = this.state;
+        const { movies , selectedMovie , user  } = this.state;
+        console.log(movies);
         if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {
             onLoggedIn: (user)=>this.onLoggedIn(user)
         }, void 0, false, {
             fileName: "src/components/main-view/MainView.jsx",
-            lineNumber: 72,
+            lineNumber: 78,
             columnNumber: 13
         }, this);
-        if (!register) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signupView.SignupView), {
-            onRegistration: (register1)=>this.onRegistration(register1)
-        }, void 0, false, {
-            fileName: "src/components/main-view/MainView.jsx",
-            lineNumber: 76,
-            columnNumber: 27
-        }, this);
+        //  if (!register) return (<SignupView onRegistration={(register) => this.onRegistration(register)}/>);
         if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             className: "main-view",
             children: "The list is empty!"
         }, void 0, false, {
             fileName: "src/components/main-view/MainView.jsx",
-            lineNumber: 78,
+            lineNumber: 84,
             columnNumber: 37
         }, this);
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27215,7 +27218,7 @@ class MainView extends (0, _reactDefault.default).Component {
                     }
                 }, void 0, false, {
                     fileName: "src/components/main-view/MainView.jsx",
-                    lineNumber: 83,
+                    lineNumber: 89,
                     columnNumber: 11
                 }, this) : movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                         movie: movie,
@@ -27224,7 +27227,7 @@ class MainView extends (0, _reactDefault.default).Component {
                         }
                     }, movie._id, false, {
                         fileName: "src/components/main-view/MainView.jsx",
-                        lineNumber: 85,
+                        lineNumber: 91,
                         columnNumber: 11
                     }, this)),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27234,13 +27237,13 @@ class MainView extends (0, _reactDefault.default).Component {
                     children: "Logout"
                 }, void 0, false, {
                     fileName: "src/components/main-view/MainView.jsx",
-                    lineNumber: 89,
+                    lineNumber: 95,
                     columnNumber: 7
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/components/main-view/MainView.jsx",
-            lineNumber: 81,
+            lineNumber: 87,
             columnNumber: 7
         }, this);
     }
@@ -29098,7 +29101,7 @@ class MovieView extends (0, _reactDefault.default).Component {
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                     className: "movie-poster",
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                        src: movie.ImagePath
+                        src: movie.imageURL
                     }, void 0, false, {
                         fileName: "src/components/movie-view/MovieView.jsx",
                         lineNumber: 11,
