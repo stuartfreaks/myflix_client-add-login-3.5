@@ -29,7 +29,7 @@ class MainView extends React.Component {
   }
 
   getMovies(token) {
-    axios.get('https://fellini-api.onrender.com/login', {
+    axios.get('https://fellini-api.onrender.com/movies', {
       headers: { Authorization: `Bearer ${token}`}
     })
     .then(response => {

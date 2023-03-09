@@ -27153,7 +27153,7 @@ class MainView extends (0, _reactDefault.default).Component {
         }
     }
     getMovies(token) {
-        (0, _axiosDefault.default).get("https://fellini-api.onrender.com/login", {
+        (0, _axiosDefault.default).get("https://fellini-api.onrender.com/movies", {
             headers: {
                 Authorization: `Bearer ${token}`
             }
