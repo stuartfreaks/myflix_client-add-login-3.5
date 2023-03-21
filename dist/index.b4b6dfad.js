@@ -27133,7 +27133,7 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _loginView = require("../LoginView/login-view");
-var _signupView = require("../SignupView/signup-view");
+var _registationView = require("../RegistrationView/registation-view");
 var _movieCard = require("../movie-card/movie-card");
 var _movieView = require("../movie-view/MovieView");
 class MainView extends (0, _reactDefault.default).Component {
@@ -27189,23 +27189,39 @@ class MainView extends (0, _reactDefault.default).Component {
             selectedMovie: newSelectedMovie
         });
     }
+    onRegistation(register) {
+        this.setState({
+            register
+        });
+    }
+    onLoggedIn(user) {
+        this.setState({
+            user
+        });
+    }
     render() {
-        const { movies , selectedMovie , user  } = this.state;
+        const { movies , selectedMovie , user , register  } = this.state;
         console.log(movies);
+        if (!register) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _registationView.RegistrationView), {
+            onRegistation: (register)=>this.onRegistration(register)
+        }, void 0, false, {
+            fileName: "src/components/main-view/MainView.jsx",
+            lineNumber: 89,
+            columnNumber: 12
+        }, this);
         if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {
             onLoggedIn: (user)=>this.onLoggedIn(user)
         }, void 0, false, {
             fileName: "src/components/main-view/MainView.jsx",
-            lineNumber: 78,
+            lineNumber: 93,
             columnNumber: 13
         }, this);
-        //  if (!register) return (<SignupView onRegistration={(register) => this.onRegistration(register)}/>);
         if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             className: "main-view",
             children: "The list is empty!"
         }, void 0, false, {
             fileName: "src/components/main-view/MainView.jsx",
-            lineNumber: 84,
+            lineNumber: 100,
             columnNumber: 37
         }, this);
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27218,7 +27234,7 @@ class MainView extends (0, _reactDefault.default).Component {
                     }
                 }, void 0, false, {
                     fileName: "src/components/main-view/MainView.jsx",
-                    lineNumber: 89,
+                    lineNumber: 107,
                     columnNumber: 11
                 }, this) : movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                         movie: movie,
@@ -27227,7 +27243,7 @@ class MainView extends (0, _reactDefault.default).Component {
                         }
                     }, movie._id, false, {
                         fileName: "src/components/main-view/MainView.jsx",
-                        lineNumber: 91,
+                        lineNumber: 109,
                         columnNumber: 11
                     }, this)),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27237,13 +27253,13 @@ class MainView extends (0, _reactDefault.default).Component {
                     children: "Logout"
                 }, void 0, false, {
                     fileName: "src/components/main-view/MainView.jsx",
-                    lineNumber: 95,
+                    lineNumber: 113,
                     columnNumber: 7
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/components/main-view/MainView.jsx",
-            lineNumber: 87,
+            lineNumber: 105,
             columnNumber: 7
         }, this);
     }
@@ -27255,7 +27271,7 @@ exports.default = MainView;
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","axios":"jo6P5","../LoginView/login-view":"6cJc6","../SignupView/signup-view":"bpvce","../movie-card/movie-card":"bwuIu","../movie-view/MovieView":"eXdJ3","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"jo6P5":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","axios":"jo6P5","../LoginView/login-view":"6cJc6","../movie-card/movie-card":"bwuIu","../movie-view/MovieView":"eXdJ3","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../RegistrationView/registation-view":"7Ybhq"}],"jo6P5":[function(require,module,exports) {
 module.exports = require("8c58ee4c9b972278");
 
 },{"8c58ee4c9b972278":"63MyY"}],"63MyY":[function(require,module,exports) {
@@ -28688,13 +28704,13 @@ function LoginView(props) {
                         onChange: (e)=>setUsername(e.target.value)
                     }, void 0, false, {
                         fileName: "src/components/LoginView/login-view.jsx",
-                        lineNumber: 31,
+                        lineNumber: 33,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/LoginView/login-view.jsx",
-                lineNumber: 29,
+                lineNumber: 31,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -28706,13 +28722,13 @@ function LoginView(props) {
                         onChange: (e)=>setPassword(e.target.value)
                     }, void 0, false, {
                         fileName: "src/components/LoginView/login-view.jsx",
-                        lineNumber: 35,
+                        lineNumber: 37,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/LoginView/login-view.jsx",
-                lineNumber: 33,
+                lineNumber: 35,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28721,13 +28737,13 @@ function LoginView(props) {
                 children: "Submit"
             }, void 0, false, {
                 fileName: "src/components/LoginView/login-view.jsx",
-                lineNumber: 38,
+                lineNumber: 40,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/LoginView/login-view.jsx",
-        lineNumber: 28,
+        lineNumber: 30,
         columnNumber: 5
     }, this);
 }
@@ -28904,147 +28920,7 @@ function registerExportsForReactRefresh(module1) {
     }
 }
 
-},{"7340221b040f2121":"786KC"}],"bpvce":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$9983 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$9983.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "RegistrationView", ()=>RegistrationView);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _s = $RefreshSig$();
-function RegistrationView(props) {
-    _s();
-    const [username, setUsername] = (0, _react.useState)("");
-    const [password, setPassword] = (0, _react.useState)("");
-    const [email, setEmail] = (0, _react.useState)("");
-    const [Birthday, setBirthday] = (0, _react.useState)("");
-    const handleSubmit = (event)=>{
-        event.preventDefault();
-        axios.post("https://fellini-api.onrender.com/users", {
-            Username: username,
-            Password: password,
-            Email: email,
-            Birthday: Birthday
-        }).then((response)=>{
-            const data = response.data;
-            console.log(data);
-            window.open("/", "_self"); // '_self' is necessary to open page in the current tab
-        }).catch((e)=>{
-            console.log("error registering the user");
-        });
-    };
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
-        onSubmit: handleSubmit,
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                children: [
-                    "Username:",
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        type: "text",
-                        value: username,
-                        onChange: (e)=>setUsername(e.target.value),
-                        required: true,
-                        minLength: "3"
-                    }, void 0, false, {
-                        fileName: "src/components/SignupView/signup-view.jsx",
-                        lineNumber: 32,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/SignupView/signup-view.jsx",
-                lineNumber: 30,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                children: [
-                    "Password:",
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        type: "password",
-                        value: password,
-                        onChange: (e)=>setPassword(e.target.value),
-                        required: true
-                    }, void 0, false, {
-                        fileName: "src/components/SignupView/signup-view.jsx",
-                        lineNumber: 42,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/SignupView/signup-view.jsx",
-                lineNumber: 40,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                children: [
-                    "Email:",
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        type: "email",
-                        value: email,
-                        onChange: (e)=>setEmail(e.target.value),
-                        required: true
-                    }, void 0, false, {
-                        fileName: "src/components/SignupView/signup-view.jsx",
-                        lineNumber: 51,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/SignupView/signup-view.jsx",
-                lineNumber: 49,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                children: [
-                    "Birthday:",
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        type: "date",
-                        value: birthday,
-                        onChange: (e)=>setBirthday(e.target.value),
-                        required: true
-                    }, void 0, false, {
-                        fileName: "src/components/SignupView/signup-view.jsx",
-                        lineNumber: 60,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/SignupView/signup-view.jsx",
-                lineNumber: 58,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                type: "submit",
-                className: "registerButton",
-                children: "Register"
-            }, void 0, false, {
-                fileName: "src/components/SignupView/signup-view.jsx",
-                lineNumber: 67,
-                columnNumber: 7
-            }, this)
-        ]
-    }, void 0, true, {
-        fileName: "src/components/SignupView/signup-view.jsx",
-        lineNumber: 29,
-        columnNumber: 5
-    }, this);
-}
-_s(RegistrationView, "bQzYK6eSbg/gRAkArZgML2HgR1U=");
-_c = RegistrationView;
-var _c;
-$RefreshReg$(_c, "RegistrationView");
-
-  $parcel$ReactRefreshHelpers$9983.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"bwuIu":[function(require,module,exports) {
+},{"7340221b040f2121":"786KC"}],"bwuIu":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$67b2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -29186,6 +29062,149 @@ class MovieView extends (0, _reactDefault.default).Component {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"lJZlQ":[function() {},{}]},["1xC6H","7a1Sg","d8Dch"], "d8Dch", "parcelRequire2fd1")
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"7Ybhq":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$38dd = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$38dd.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "RegistrationView", ()=>RegistrationView);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _axios = require("axios");
+var _axiosDefault = parcelHelpers.interopDefault(_axios);
+var _s = $RefreshSig$();
+function RegistrationView(props) {
+    _s();
+    const [username, setUsername] = (0, _react.useState)("");
+    const [password, setPassword] = (0, _react.useState)("");
+    const [email, setEmail] = (0, _react.useState)("");
+    const [Birthday, setBirthday] = (0, _react.useState)("");
+    const handleSubmit = (event)=>{
+        event.preventDefault();
+        console.log(username, password, email, Birthday);
+        (0, _axiosDefault.default).post("https://fellini-api.onrender.com/users", {
+            Username: username,
+            Password: password,
+            Email: email,
+            Birthday: Birthday
+        }).then((response)=>{
+            const data = response.data;
+            console.log(data);
+            window.open("/", "_self"); // '_self' is necessary to open page in the current tab
+        }).catch((e)=>{
+            console.log("error registering the user");
+        });
+    };
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
+        onSubmit: handleSubmit,
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                children: [
+                    "Username:",
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        type: "text",
+                        value: username,
+                        onChange: (e)=>setUsername(e.target.value),
+                        required: true,
+                        minLength: "3"
+                    }, void 0, false, {
+                        fileName: "src/components/RegistrationView/registation-view.jsx",
+                        lineNumber: 42,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/RegistrationView/registation-view.jsx",
+                lineNumber: 40,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                children: [
+                    "Password:",
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        type: "password",
+                        value: password,
+                        onChange: (e)=>setPassword(e.target.value),
+                        required: true
+                    }, void 0, false, {
+                        fileName: "src/components/RegistrationView/registation-view.jsx",
+                        lineNumber: 52,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/RegistrationView/registation-view.jsx",
+                lineNumber: 50,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                children: [
+                    "Email:",
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        type: "email",
+                        value: email,
+                        onChange: (e)=>setEmail(e.target.value),
+                        required: true
+                    }, void 0, false, {
+                        fileName: "src/components/RegistrationView/registation-view.jsx",
+                        lineNumber: 61,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/RegistrationView/registation-view.jsx",
+                lineNumber: 59,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                children: [
+                    "Birthday:",
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        type: "date",
+                        value: Birthday,
+                        onChange: (e)=>setBirthday(e.target.value),
+                        required: true
+                    }, void 0, false, {
+                        fileName: "src/components/RegistrationView/registation-view.jsx",
+                        lineNumber: 70,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/RegistrationView/registation-view.jsx",
+                lineNumber: 68,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                type: "submit",
+                className: "registerButton",
+                children: "Register"
+            }, void 0, false, {
+                fileName: "src/components/RegistrationView/registation-view.jsx",
+                lineNumber: 77,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/RegistrationView/registation-view.jsx",
+        lineNumber: 39,
+        columnNumber: 5
+    }, this);
+}
+_s(RegistrationView, "bQzYK6eSbg/gRAkArZgML2HgR1U=");
+_c = RegistrationView;
+var _c;
+$RefreshReg$(_c, "RegistrationView");
+
+  $parcel$ReactRefreshHelpers$38dd.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","axios":"jo6P5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"lJZlQ":[function() {},{}]},["1xC6H","7a1Sg","d8Dch"], "d8Dch", "parcelRequire2fd1")
 
 //# sourceMappingURL=index.b4b6dfad.js.map

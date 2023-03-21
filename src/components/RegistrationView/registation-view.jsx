@@ -1,4 +1,9 @@
 import{ useState } from "react";
+import axios from "axios";
+
+
+
+
 
 export function RegistrationView (props) {
   const [ username, setUsername ] = useState('');
@@ -8,6 +13,11 @@ export function RegistrationView (props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log(username, password, email, Birthday);
+   
+   
+
+  
 
       axios.post('https://fellini-api.onrender.com/users', {
         Username: username,
@@ -59,7 +69,7 @@ export function RegistrationView (props) {
         Birthday:
         <input
           type="date"
-          value={birthday}
+          value={Birthday}
           onChange={(e) => setBirthday(e.target.value)}
           required
         />
