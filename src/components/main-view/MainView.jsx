@@ -85,8 +85,7 @@ setSelectedMovie(newSelectedMovie) {
 
     console.log(movies)
 
-    if(!register)
-    return <RegistrationView onRegistation={(register) => this.onRegistration(register)} />
+   
   
 
    if (!user) {
