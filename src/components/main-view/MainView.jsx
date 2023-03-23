@@ -79,10 +79,6 @@ setSelectedMovie(newSelectedMovie) {
   render() {
    const { movies, selectedMovie, user, register, } = this.state;
 
-    console.log(movies)
-
-   
-  
 
    if (!user) {
      return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
@@ -105,7 +101,7 @@ setSelectedMovie(newSelectedMovie) {
         ))
       }
 
-      <button onClick={() => { setUser(null)}}>Logout</button>
+      <button onClick={() => { this.onLoggedOut(null)}}>Logout</button>
     </div>
     );
   }

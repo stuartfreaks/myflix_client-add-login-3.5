@@ -5,6 +5,7 @@ import axios from "axios";
 
 
 
+
 export function RegistrationView (props) {
   const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
@@ -14,7 +15,7 @@ export function RegistrationView (props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(username, password, email, Birthday);
-   
+    props.onRegistration(username);
    
 
   
@@ -45,6 +46,7 @@ export function RegistrationView (props) {
           onChange={(e) => setUsername(e.target.value)}
           required
           minLength="3"
+          placeholder="Enter Username"
         />
       </label>
       <label>
@@ -54,6 +56,9 @@ export function RegistrationView (props) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
+          minLength="8"
+          placeholder="Set Password"
+
         />
       </label>
       <label>
@@ -63,6 +68,7 @@ export function RegistrationView (props) {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
+         placeholder="Enter Email"
         />
       </label>
       <label>
