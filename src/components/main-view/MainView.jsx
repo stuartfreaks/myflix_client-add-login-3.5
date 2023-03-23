@@ -101,7 +101,7 @@ setSelectedMovie(newSelectedMovie) {
         ))
       }
 
-      <button onClick={() => { this.onLoggedOut(null)}}>Logout</button>
+      <button onClick={() => { this.setUser(null)}}>Logout</button>
     </div>
     );
   }
