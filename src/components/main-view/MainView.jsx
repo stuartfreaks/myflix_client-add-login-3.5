@@ -73,11 +73,7 @@ setSelectedMovie(newSelectedMovie) {
       });
     }
 
-    onLoggedIn(user) {
-      this.setState({
-        user
-      })
-    }
+  
    
 
   render() {
@@ -102,7 +98,7 @@ setSelectedMovie(newSelectedMovie) {
   
     return (
       <div className="main-view">
-      {selectedMovie
+      {selectedMovie 
         ? <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
         : movies.map(movie => (
           <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }}/>
