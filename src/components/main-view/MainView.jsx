@@ -79,18 +79,16 @@ setSelectedMovie(newSelectedMovie) {
   render() {
    const { movies, selectedMovie, user, register, } = this.state;
 
+  
+  
 
    if (!user) {
      return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
 
    }
 
-  
-   
-  
     if (movies.length === 0) return <div className="main-view">The list is empty!</div>;
 
-  
   
     return (
       <div className="main-view">
