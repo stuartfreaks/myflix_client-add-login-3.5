@@ -1,40 +1,33 @@
-import{ useState } from "react";
-import axios from "axios";
+import { useState } from 'react';
+import axios from 'axios';
 
-
-
-
-
-
-export function RegistrationView (props) {
-  const [ username, setUsername ] = useState('');
-  const [ password, setPassword ] = useState('');
-  const [ email, setEmail ] = useState('');
-  const [ Birthday, setBirthday] = useState('');
+export function RegistrationView(props) {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [Birthday, setBirthday] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(username, password, email, Birthday);
     props.onRegistration(username);
-   
 
-  
-
-      axios.post('https://fellini-api.onrender.com/users', {
+    axios
+      .post('https://fellini-api.onrender.com/users', {
         Username: username,
         Password: password,
         Email: email,
-        Birthday: Birthday
+        Birthday: Birthday,
       })
-      .then(response => {
+      .then((response) => {
         const data = response.data;
         console.log(data);
         window.open('/', '_self'); // '_self' is necessary to open page in the current tab
       })
-      .catch(e => {
-        console.log('error registering the user')
+      .catch((e) => {
+        console.log('error registering the user');
       });
-    };
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -58,7 +51,6 @@ export function RegistrationView (props) {
           required
           minLength="8"
           placeholder="Set Password"
-
         />
       </label>
       <label>
@@ -68,7 +60,7 @@ export function RegistrationView (props) {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-         placeholder="Enter Email"
+          placeholder="Enter Email"
         />
       </label>
       <label>
@@ -80,7 +72,9 @@ export function RegistrationView (props) {
           required
         />
       </label>
-      <button type="submit" className="registerButton">Register</button>
+      <button type="submit" className="registerButton">
+        Register
+      </button>
     </form>
   );
-};
+}
