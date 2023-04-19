@@ -99,26 +99,16 @@ class MainView extends React.Component {
           ))
         )}
 
-<<<<<<< HEAD
         <button
           onClick={() => {
-            this.onLoggedOut(null);
+            this.setUser(null);
           }}
         >
           Logout
         </button>
       </div>
-=======
-      <button onClick={() => { this.setUser(null)}}>Logout</button>
-    </div>
->>>>>>> a99603abb7ea45e9a08992d755c726242673c80e
     );
   }
 }
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> a99603abb7ea45e9a08992d755c726242673c80e
 export default MainView;
