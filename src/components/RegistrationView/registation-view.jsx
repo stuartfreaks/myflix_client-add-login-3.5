@@ -2,35 +2,59 @@ import { useState } from 'react';
 import axios from 'axios';
 
 export function RegistrationView(props) {
+  const [name, setName] = useState('');
+  const [surname, setSurname] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  const [Birthday, setBirthday] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(username, password, email, Birthday);
+
     props.onRegistration(username);
 
     axios
       .post('https://fellini-api.onrender.com/users', {
+        name: name,
+        surname: surname,
         Username: username,
-        Password: password,
         Email: email,
-        Birthday: Birthday,
+        Password: password,
       })
       .then((response) => {
         const data = response.data;
-        console.log(data);
-        window.open('/', '_self'); // '_self' is necessary to open page in the current tab
-      })
-      .catch((e) => {
-        console.log(e);
+        console.log(response);
+        // window.open('/', '_self'); // '_self' is necessary to open page in the current tab
       });
+    // .catch((e) => {
+    //   console.log(e);
+    // });
   };
 
   return (
     <form onSubmit={handleSubmit}>
+      <label>
+        Name:
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+          minLength="3"
+          placeholder="Enter Username"
+        />
+      </label>
+      <label>
+        Surname:
+        <input
+          type="text"
+          value={surname}
+          onChange={(e) => setSurname(e.target.value)}
+          required
+          minLength="3"
+          placeholder="Enter Username"
+        />
+      </label>
       <label>
         Username:
         <input
@@ -40,17 +64,6 @@ export function RegistrationView(props) {
           required
           minLength="3"
           placeholder="Enter Username"
-        />
-      </label>
-      <label>
-        Password:
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          minLength="8"
-          placeholder="Set Password"
         />
       </label>
       <label>
@@ -64,14 +77,17 @@ export function RegistrationView(props) {
         />
       </label>
       <label>
-        Birthday:
+        Password:
         <input
-          type="date"
-          value={Birthday}
-          onChange={(e) => setBirthday(e.target.value)}
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           required
+          minLength="8"
+          placeholder="Set Password"
         />
       </label>
+
       <button type="submit" className="registerButton">
         Register
       </button>

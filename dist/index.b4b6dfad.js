@@ -27202,13 +27202,8 @@ class MainView extends (0, _reactDefault.default).Component {
             lineNumber: 78,
             columnNumber: 9
         }, this);
-        if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {
-            onLoggedIn: (user)=>this.onLoggedIn(user)
-        }, void 0, false, {
-            fileName: "src/components/main-view/MainView.jsx",
-            lineNumber: 84,
-            columnNumber: 14
-        }, this);
+        // if (!user)
+        //   return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
         if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             className: "main-view"
         }, void 0, false, {
@@ -28938,30 +28933,74 @@ var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _s = $RefreshSig$();
 function RegistrationView(props) {
     _s();
+    const [name, setName] = (0, _react.useState)("");
+    const [surname, setSurname] = (0, _react.useState)("");
     const [username, setUsername] = (0, _react.useState)("");
     const [password, setPassword] = (0, _react.useState)("");
     const [email, setEmail] = (0, _react.useState)("");
-    const [Birthday, setBirthday] = (0, _react.useState)("");
     const handleSubmit = (event)=>{
         event.preventDefault();
-        console.log(username, password, email, Birthday);
         props.onRegistration(username);
         (0, _axiosDefault.default).post("https://fellini-api.onrender.com/users", {
+            name: name,
+            surname: surname,
             Username: username,
-            Password: password,
             Email: email,
-            Birthday: Birthday
+            Password: password
         }).then((response)=>{
             const data = response.data;
-            console.log(data);
-            window.open("/", "_self"); // '_self' is necessary to open page in the current tab
-        }).catch((e)=>{
-            console.log(e);
+            console.log(response);
+        // window.open('/', '_self'); // '_self' is necessary to open page in the current tab
         });
+    // .catch((e) => {
+    //   console.log(e);
+    // });
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
         onSubmit: handleSubmit,
         children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                children: [
+                    "Name:",
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        type: "text",
+                        value: name,
+                        onChange: (e)=>setName(e.target.value),
+                        required: true,
+                        minLength: "3",
+                        placeholder: "Enter Username"
+                    }, void 0, false, {
+                        fileName: "src/components/RegistrationView/registation-view.jsx",
+                        lineNumber: 38,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/RegistrationView/registation-view.jsx",
+                lineNumber: 36,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                children: [
+                    "Surname:",
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        type: "text",
+                        value: surname,
+                        onChange: (e)=>setSurname(e.target.value),
+                        required: true,
+                        minLength: "3",
+                        placeholder: "Enter Username"
+                    }, void 0, false, {
+                        fileName: "src/components/RegistrationView/registation-view.jsx",
+                        lineNumber: 49,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/RegistrationView/registation-view.jsx",
+                lineNumber: 47,
+                columnNumber: 7
+            }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                 children: [
                     "Username:",
@@ -28974,13 +29013,33 @@ function RegistrationView(props) {
                         placeholder: "Enter Username"
                     }, void 0, false, {
                         fileName: "src/components/RegistrationView/registation-view.jsx",
-                        lineNumber: 36,
+                        lineNumber: 60,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/RegistrationView/registation-view.jsx",
-                lineNumber: 34,
+                lineNumber: 58,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                children: [
+                    "Email:",
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        type: "email",
+                        value: email,
+                        onChange: (e)=>setEmail(e.target.value),
+                        required: true,
+                        placeholder: "Enter Email"
+                    }, void 0, false, {
+                        fileName: "src/components/RegistrationView/registation-view.jsx",
+                        lineNumber: 71,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/RegistrationView/registation-view.jsx",
+                lineNumber: 69,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -28995,52 +29054,13 @@ function RegistrationView(props) {
                         placeholder: "Set Password"
                     }, void 0, false, {
                         fileName: "src/components/RegistrationView/registation-view.jsx",
-                        lineNumber: 47,
+                        lineNumber: 81,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/RegistrationView/registation-view.jsx",
-                lineNumber: 45,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                children: [
-                    "Email:",
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        type: "email",
-                        value: email,
-                        onChange: (e)=>setEmail(e.target.value),
-                        required: true,
-                        placeholder: "Enter Email"
-                    }, void 0, false, {
-                        fileName: "src/components/RegistrationView/registation-view.jsx",
-                        lineNumber: 58,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/RegistrationView/registation-view.jsx",
-                lineNumber: 56,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                children: [
-                    "Birthday:",
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        type: "date",
-                        value: Birthday,
-                        onChange: (e)=>setBirthday(e.target.value),
-                        required: true
-                    }, void 0, false, {
-                        fileName: "src/components/RegistrationView/registation-view.jsx",
-                        lineNumber: 68,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/RegistrationView/registation-view.jsx",
-                lineNumber: 66,
+                lineNumber: 79,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -29049,17 +29069,17 @@ function RegistrationView(props) {
                 children: "Register"
             }, void 0, false, {
                 fileName: "src/components/RegistrationView/registation-view.jsx",
-                lineNumber: 75,
+                lineNumber: 91,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/RegistrationView/registation-view.jsx",
-        lineNumber: 33,
+        lineNumber: 35,
         columnNumber: 5
     }, this);
 }
-_s(RegistrationView, "/bjdktouC/q/NS53njZN/YkUYOE=");
+_s(RegistrationView, "yrOOx9y2ex4fEaMrGFQa1sjH0ko=");
 _c = RegistrationView;
 var _c;
 $RefreshReg$(_c, "RegistrationView");
