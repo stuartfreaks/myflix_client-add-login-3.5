@@ -58,30 +58,26 @@ class MainView extends React.Component {
     });
   }
 
-  onRegistration(register) {
+  onLoggedOut() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
     this.setState({
-      register,
-    });
-  }
-
-  onLoggedIn(user) {
-    this.setState({
-      user,
+      user: null,
     });
   }
 
   render() {
     const { movies, selectedMovie, user, register } = this.state;
 
-    if (!register)
+    if (!user) {
       return (
-        <RegistrationView
-          onRegistration={(register) => this.onRegistration(register)}
-        />
+        <>
+          <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+          or
+          <RegistrationView />
+        </>
       );
-
-    // if (!user)
-    //   return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
+    }
 
     if (movies.length === 0) return <div className="main-view" />;
 
@@ -108,7 +104,7 @@ class MainView extends React.Component {
 
         <button
           onClick={() => {
-            this.setUser(null);
+            this.onLoggedOut();
           }}
         >
           Logout

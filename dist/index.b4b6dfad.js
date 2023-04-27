@@ -27183,32 +27183,37 @@ class MainView extends (0, _reactDefault.default).Component {
             selectedMovie: newSelectedMovie
         });
     }
-    onRegistration(register) {
+    onLoggedOut() {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
         this.setState({
-            register
-        });
-    }
-    onLoggedIn(user) {
-        this.setState({
-            user
+            user: null
         });
     }
     render() {
         const { movies , selectedMovie , user , register  } = this.state;
-        if (!register) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _registationView.RegistrationView), {
-            onRegistration: (register)=>this.onRegistration(register)
-        }, void 0, false, {
-            fileName: "src/components/main-view/MainView.jsx",
-            lineNumber: 78,
-            columnNumber: 9
-        }, this);
-        // if (!user)
-        //   return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
+        if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {
+                    onLoggedIn: (user)=>this.onLoggedIn(user)
+                }, void 0, false, {
+                    fileName: "src/components/main-view/MainView.jsx",
+                    lineNumber: 75,
+                    columnNumber: 11
+                }, this),
+                "or",
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _registationView.RegistrationView), {}, void 0, false, {
+                    fileName: "src/components/main-view/MainView.jsx",
+                    lineNumber: 77,
+                    columnNumber: 11
+                }, this)
+            ]
+        }, void 0, true);
         if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             className: "main-view"
         }, void 0, false, {
             fileName: "src/components/main-view/MainView.jsx",
-            lineNumber: 86,
+            lineNumber: 82,
             columnNumber: 37
         }, this);
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27221,7 +27226,7 @@ class MainView extends (0, _reactDefault.default).Component {
                     }
                 }, void 0, false, {
                     fileName: "src/components/main-view/MainView.jsx",
-                    lineNumber: 91,
+                    lineNumber: 87,
                     columnNumber: 11
                 }, this) : movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                         movie: movie,
@@ -27230,23 +27235,23 @@ class MainView extends (0, _reactDefault.default).Component {
                         }
                     }, movie._id, false, {
                         fileName: "src/components/main-view/MainView.jsx",
-                        lineNumber: 99,
+                        lineNumber: 95,
                         columnNumber: 13
                     }, this)),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                     onClick: ()=>{
-                        this.setUser(null);
+                        this.onLoggedOut();
                     },
                     children: "Logout"
                 }, void 0, false, {
                     fileName: "src/components/main-view/MainView.jsx",
-                    lineNumber: 109,
+                    lineNumber: 105,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/components/main-view/MainView.jsx",
-            lineNumber: 89,
+            lineNumber: 85,
             columnNumber: 7
         }, this);
     }
@@ -28670,11 +28675,12 @@ function LoginView(props) {
     const [password, setPassword] = (0, _react.useState)("");
     const handleSubmit = (e)=>{
         e.preventDefault();
-        /* Send a request to the server for authentication */ (0, _axiosDefault.default).post("https://fellini-api.onrender.com/login", {
+        (0, _axiosDefault.default).post("https://fellini-api.onrender.com/login", {
             Username: username,
             Password: password
         }).then((response)=>{
             const data = response.data;
+            console.log(response);
             props.onLoggedIn(data);
         }).catch((e)=>{
             console.log("no such user");
@@ -28692,13 +28698,13 @@ function LoginView(props) {
                         onChange: (e)=>setUsername(e.target.value)
                     }, void 0, false, {
                         fileName: "src/components/LoginView/login-view.jsx",
-                        lineNumber: 30,
+                        lineNumber: 31,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/LoginView/login-view.jsx",
-                lineNumber: 28,
+                lineNumber: 29,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -28710,13 +28716,13 @@ function LoginView(props) {
                         onChange: (e)=>setPassword(e.target.value)
                     }, void 0, false, {
                         fileName: "src/components/LoginView/login-view.jsx",
-                        lineNumber: 38,
+                        lineNumber: 39,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/LoginView/login-view.jsx",
-                lineNumber: 36,
+                lineNumber: 37,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28725,21 +28731,13 @@ function LoginView(props) {
                 children: "Login"
             }, void 0, false, {
                 fileName: "src/components/LoginView/login-view.jsx",
-                lineNumber: 45,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                onClick: ()=>{},
-                children: "Register"
-            }, void 0, false, {
-                fileName: "src/components/LoginView/login-view.jsx",
-                lineNumber: 48,
+                lineNumber: 46,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/LoginView/login-view.jsx",
-        lineNumber: 27,
+        lineNumber: 28,
         columnNumber: 5
     }, this);
 }
@@ -28940,21 +28938,27 @@ function RegistrationView(props) {
     const [email, setEmail] = (0, _react.useState)("");
     const handleSubmit = (event)=>{
         event.preventDefault();
-        props.onRegistration(username);
-        (0, _axiosDefault.default).post("https://fellini-api.onrender.com/users", {
-            name: name,
-            surname: surname,
+        const data = {
+            Name: name,
+            Surname: surname,
             Username: username,
-            Email: email,
-            Password: password
+            Password: password,
+            Email: email
+        };
+        fetch("https://fellini-api.onrender.com/users", {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json"
+            }
         }).then((response)=>{
-            const data = response.data;
-            console.log(response);
-        // window.open('/', '_self'); // '_self' is necessary to open page in the current tab
+            if (response.ok) {
+                alert("Signup successful");
+                window.location.reload();
+            } else alert("Signup failed");
+        }).catch((e)=>{
+            console.log(e);
         });
-    // .catch((e) => {
-    //   console.log(e);
-    // });
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
         onSubmit: handleSubmit,
@@ -28971,13 +28975,13 @@ function RegistrationView(props) {
                         placeholder: "Enter Username"
                     }, void 0, false, {
                         fileName: "src/components/RegistrationView/registation-view.jsx",
-                        lineNumber: 38,
+                        lineNumber: 45,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/RegistrationView/registation-view.jsx",
-                lineNumber: 36,
+                lineNumber: 43,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -28992,13 +28996,13 @@ function RegistrationView(props) {
                         placeholder: "Enter Username"
                     }, void 0, false, {
                         fileName: "src/components/RegistrationView/registation-view.jsx",
-                        lineNumber: 49,
+                        lineNumber: 56,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/RegistrationView/registation-view.jsx",
-                lineNumber: 47,
+                lineNumber: 54,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -29013,13 +29017,13 @@ function RegistrationView(props) {
                         placeholder: "Enter Username"
                     }, void 0, false, {
                         fileName: "src/components/RegistrationView/registation-view.jsx",
-                        lineNumber: 60,
+                        lineNumber: 67,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/RegistrationView/registation-view.jsx",
-                lineNumber: 58,
+                lineNumber: 65,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -29033,13 +29037,13 @@ function RegistrationView(props) {
                         placeholder: "Enter Email"
                     }, void 0, false, {
                         fileName: "src/components/RegistrationView/registation-view.jsx",
-                        lineNumber: 71,
+                        lineNumber: 78,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/RegistrationView/registation-view.jsx",
-                lineNumber: 69,
+                lineNumber: 76,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -29054,13 +29058,13 @@ function RegistrationView(props) {
                         placeholder: "Set Password"
                     }, void 0, false, {
                         fileName: "src/components/RegistrationView/registation-view.jsx",
-                        lineNumber: 81,
+                        lineNumber: 88,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/RegistrationView/registation-view.jsx",
-                lineNumber: 79,
+                lineNumber: 86,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -29069,13 +29073,13 @@ function RegistrationView(props) {
                 children: "Register"
             }, void 0, false, {
                 fileName: "src/components/RegistrationView/registation-view.jsx",
-                lineNumber: 91,
+                lineNumber: 98,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/RegistrationView/registation-view.jsx",
-        lineNumber: 35,
+        lineNumber: 42,
         columnNumber: 5
     }, this);
 }

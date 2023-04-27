@@ -10,25 +10,32 @@ export function RegistrationView(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const data = {
+      Name: name,
+      Surname: surname,
+      Username: username,
+      Password: password,
+      Email: email,
+    };
 
-    props.onRegistration(username);
-
-    axios
-      .post('https://fellini-api.onrender.com/users', {
-        name: name,
-        surname: surname,
-        Username: username,
-        Email: email,
-        Password: password,
-      })
+    fetch('https://fellini-api.onrender.com/users', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
       .then((response) => {
-        const data = response.data;
-        console.log(response);
-        // window.open('/', '_self'); // '_self' is necessary to open page in the current tab
+        if (response.ok) {
+          alert('Signup successful');
+          window.location.reload();
+        } else {
+          alert('Signup failed');
+        }
+      })
+      .catch((e) => {
+        console.log(e);
       });
-    // .catch((e) => {
-    //   console.log(e);
-    // });
   };
 
   return (

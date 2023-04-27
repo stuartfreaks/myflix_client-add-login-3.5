@@ -8,7 +8,7 @@ export function LoginView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    /* Send a request to the server for authentication */
+    / Send a request to the server for authentication /;
     axios
       .post('https://fellini-api.onrender.com/login', {
         Username: username,
@@ -16,6 +16,7 @@ export function LoginView(props) {
       })
       .then((response) => {
         const data = response.data;
+        console.log(response);
         props.onLoggedIn(data);
       })
       .catch((e) => {
@@ -45,7 +46,6 @@ export function LoginView(props) {
       <button type="submit" onClick={handleSubmit}>
         Login
       </button>
-      <button onClick={() => {}}>Register</button>
     </form>
   );
 }
