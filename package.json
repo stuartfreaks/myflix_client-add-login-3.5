@@ -17,12 +17,20 @@
   },
   "homepage": "https://github.com/stuartfreaks/myflix_client#readme",
   "dependencies": {
-    "axios": "^0.24.0",
-    "parcel": "^2.8.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "axios": "^1.4.0",
+    "bootstrap": "5.2.0",
+    "prop-types": "^15.8.1",
+    "react": "18.0.0",
+    "react-bootstrap": "2.5.0",
+    "react-dom": "18.0.0",
+    "react-router-dom": "^5.3.0",
+    "react-scripts": "4.0.0"
   },
   "devDependencies": {
-    
+    "@parcel/transformer-sass": "^2.8.3",
+    "browser-resolve": "^2.0.0",
+    "buffer": "^5.7.1",
+    "detective": "^5.2.1",
+    "process": "^0.11.10"
   }
 }

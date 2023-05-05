@@ -1,6 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import  MainView  from './components/main-view/MainView';
+import MainView from './components/main-view/MainView';
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Import statement to indicate that you need to bundle `./index.scss`
 import './index.scss';
@@ -9,7 +15,9 @@ import './index.scss';
 class MyFlixApplication extends React.Component {
   render() {
     return (
-      <MainView />
+      <Container style={{ border: '1px solid red' }}>
+        <MainView />
+      </Container>
     );
   }
 }
