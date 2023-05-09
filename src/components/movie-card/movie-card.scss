@@ -1,12 +1,14 @@
 .movieContainer {
-  display: inline-table;
+  display: inline-block;
 }
 
 .movieCard {
   width: 100%;
-  margin-top: 40px;
+  margin: 25px;
 }
 
-.card-button {
-  width: 100%;
+.cardImage {
+  width: 100% !important;
+  height: 400x !important;
+  object-fit: cover;
 }

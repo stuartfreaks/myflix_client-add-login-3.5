@@ -6,8 +6,6 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 // Import statement to indicate that you need to bundle `./index.scss`
 import './index.scss';
 

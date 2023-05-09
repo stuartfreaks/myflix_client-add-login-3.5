@@ -2938,7 +2938,6 @@ var _col = require("react-bootstrap/Col");
 var _colDefault = parcelHelpers.interopDefault(_col);
 var _row = require("react-bootstrap/Row");
 var _rowDefault = parcelHelpers.interopDefault(_row);
-var _bootstrapMinCss = require("bootstrap/dist/css/bootstrap.min.css");
 // Import statement to indicate that you need to bundle `./index.scss`
 var _indexScss = require("./index.scss");
 // Main component (will eventually use all the others)
@@ -2947,12 +2946,12 @@ class MyFlixApplication extends (0, _reactDefault.default).Component {
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _containerDefault.default), {
             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _mainViewDefault.default), {}, void 0, false, {
                 fileName: "src/index.jsx",
-                lineNumber: 19,
+                lineNumber: 17,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "src/index.jsx",
-            lineNumber: 18,
+            lineNumber: 16,
             columnNumber: 7
         }, this);
     }
@@ -2967,7 +2966,7 @@ const container = document.getElementsByClassName("app-container")[0];
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom":"j6uA9","./components/main-view/MainView":"1Alxl","./index.scss":"lJZlQ","@parcel/transformer-js/src/esmodule-helpers.js":"fHupN","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"eRRK8","react-bootstrap/Container":"hEdsw","react-bootstrap/Col":"2L2I6","react-bootstrap/Row":"cMC39","bootstrap/dist/css/bootstrap.min.css":"i5LP7"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom":"j6uA9","./components/main-view/MainView":"1Alxl","./index.scss":"lJZlQ","@parcel/transformer-js/src/esmodule-helpers.js":"fHupN","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"eRRK8","react-bootstrap/Container":"hEdsw","react-bootstrap/Col":"2L2I6","react-bootstrap/Row":"cMC39"}],"iTorj":[function(require,module,exports) {
 "use strict";
 module.exports = require("36a312def05437d6");
 
@@ -47823,6 +47822,6 @@ $RefreshReg$(_c, "RegistrationView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","axios":"jo6P5","react-bootstrap/Button":"aPzUt","react-bootstrap/Form":"iBZ80","@parcel/transformer-js/src/esmodule-helpers.js":"fHupN","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"eRRK8","./registration-view.scss":"aAM81"}],"aAM81":[function() {},{}],"lJZlQ":[function() {},{}],"i5LP7":[function() {},{}]},["5qDA7","7W0df","d8Dch"], "d8Dch", "parcelRequire2fd1")
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","axios":"jo6P5","react-bootstrap/Button":"aPzUt","react-bootstrap/Form":"iBZ80","@parcel/transformer-js/src/esmodule-helpers.js":"fHupN","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"eRRK8","./registration-view.scss":"aAM81"}],"aAM81":[function() {},{}],"lJZlQ":[function() {},{}]},["5qDA7","7W0df","d8Dch"], "d8Dch", "parcelRequire2fd1")
 
 //# sourceMappingURL=index.b4b6dfad.js.map
