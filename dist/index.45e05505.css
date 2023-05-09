@@ -46,6 +46,10 @@
   font-family: Didot, sans-serif;
 }
 
+.movie-poster {
+  text-align: center;
+}
+
 .movie-button-div {
   text-align: center;
   width: 200px;
@@ -55,6 +59,18 @@
 .movie-button {
   background-color: #1c2d19;
   align-items: center;
+  margin-top: 20px;
+}
+
+.movie-button-div {
+  text-align: center;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.movie-button {
+  width: 100%;
+  background-color: #1c2d19;
   margin-top: 20px;
 }
 
