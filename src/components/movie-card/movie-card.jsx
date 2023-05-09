@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 export class MovieCard extends React.Component {
   render() {
     const { movie } = this.props;
-
+    console.log(movie);
     return (
       <Container className="movieContainer">
         <Row>
@@ -20,14 +20,15 @@ export class MovieCard extends React.Component {
                 <Card.Img
                   className="cardImage"
                   variant="top"
-                  src={movie.image}
+                  src={movie.imageURL}
+                  crossorigin="anonymous"
                 />
                 <Card.Body>
                   <Card.Title>{movie.Title}</Card.Title>
                   <Card.Text>{movie.description}</Card.Text>
                   <Link to={`/movies/${movie._id}`}>
                     <Button className="card-button" variant="primary">
-                      Open
+                      Details
                     </Button>
                   </Link>
                 </Card.Body>
