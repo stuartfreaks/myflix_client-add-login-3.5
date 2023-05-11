@@ -1,7 +1,8 @@
 import React from 'react';
-
+import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
-
+import moment from 'moment';
 import './movie-view.scss';
 
 export class MovieView extends React.Component {
@@ -14,21 +15,23 @@ export class MovieView extends React.Component {
           <img src={movie.imageURL} />
         </div>
         <div className="movie-title">
-          <span className="label">Title: </span>
+          <span className="label"> </span>
           <span className="value">{movie.Title}</span>
         </div>
-        <div className="movie-description">
-          <span className="label">Description: </span>
-          <span className="value">{movie.Description}</span>
+        <div className="year">
+          <span className="label"></span>
+          <br></br>
+          <span className="value">{moment(movie.year).format('YYYY')}</span>
         </div>
-        <Button
-          className="movie-button"
-          onClick={() => {
-            onBackClick(null);
-          }}
-        >
-          Back
-        </Button>
+        <div className="movie-description">
+          <span className="label">
+            <br></br>
+          </span>
+          <span className="value">{movie.summary}</span>
+        </div>
+        <Link to={`/`}>
+          <Button className="back-button">Back</Button>
+        </Link>
       </div>
     );
   }
