@@ -30,7 +30,13 @@
 }
 
 .movie-title {
+  text-align: center;
+  padding-top: 10px;
   font-size: x-large;
+}
+
+.year {
+  text-align: center;
 }
 
 * {
@@ -82,6 +88,8 @@
   font-family: Didot, sans-serif;
   font-size: large;
 }
+
+
 
 :root {
   --bs-blue: #0d6efd;

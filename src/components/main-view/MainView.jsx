@@ -1,7 +1,13 @@
 import React from 'react';
 import axios from 'axios';
 
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Navigate,
+  Route,
+  Routes,
+  Redirect,
+} from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
 
 import Col from 'react-bootstrap/Col';
@@ -11,7 +17,8 @@ import { RegistrationView } from '../RegistrationView/registration-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/MovieView';
 import { NavigationBar } from '../navigation-bar/navigation-bar';
-import ProfileView from '../profile-view/profile-view';
+
+import { ProfileView } from '../profile-view/profile-view.scss';
 
 import './main-view.scss';
 import { BrowserRouter } from 'react-router-dom';
@@ -73,8 +80,53 @@ class MainView extends React.Component {
     window.open('/', '_self');
   }
 
+  handleFavorite = (movieId, action) => {
+    const { user, favoriteMovies } = this.state;
+    const accessToken = localStorage.getItem('token');
+    if (accessToken !== null && user !== null) {
+      // Add MovieID to Favorites
+      if (action === 'add') {
+        this.setState({ favoriteMovies: [...favoriteMovies, movieId] });
+        axios
+          .post(
+            `https://fellini-api.onrender.com/users/${user}/movies/${movieId}`,
+            {},
+            {
+              headers: { Authorization: `Bearer ${accessToken}` },
+            }
+          )
+          .then((res) => {
+            console.log(`Movie added to ${user} favorite movies`);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+
+        // Remove MovieID from Favorites
+      } else if (action === 'remove') {
+        this.setState({
+          favoriteMovies: favoriteMovies.filter((id) => id !== movieId),
+        });
+        axios
+          .delete(
+            `https://fellini-api.onrender.com/users/${user}/movies/${movieId}`,
+            {
+              headers: { Authorization: `Bearer ${accessToken}` },
+            }
+          )
+          .then((res) => {
+            console.log(`Movie removed from ${user} favorite movies`);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    }
+  };
+
   render() {
-    const { movies, user, register } = this.state;
+    const { movies, user, favoriteMovieList, token, favoriteMovie } =
+      this.state;
 
     if (!user) {
       return (
@@ -133,26 +185,23 @@ class MainView extends React.Component {
               }}
             />
             <Route
-              path="/users/:username"
-              render={(history) => {
-                if (!user)
-                  return (
+              path="/users"
+              element={
+                <>
+                  {user ? (
                     <Col>
-                      <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
-                      ;
+                      <ProfileView
+                        user={user}
+                        favoriteMovieList={favoriteMovieList}
+                        token={token}
+                        favoriteMovies={favoriteMovie}
+                      />
                     </Col>
-                  );
-                if (movies.length === 0) return <div className="main-view" />;
-                return (
-                  <Col md={8}>
-                    <ProfileView
-                      movies={movies}
-                      user={user}
-                      onBackClick={() => history.goBack()}
-                    />
-                  </Col>
-                );
-              }}
+                  ) : (
+                    <Navigate to="/login" replace />
+                  )}
+                </>
+              }
             />
 
             <Route
