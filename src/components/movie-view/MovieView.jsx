@@ -11,6 +11,9 @@ export class MovieView extends React.Component {
 
     return (
       <div className="movie-view">
+        <Link to={``}>
+          <Button className="Fav-button">Add to Favorites</Button>
+        </Link>
         <div className="movie-poster">
           <img src={movie.imageURL} />
         </div>

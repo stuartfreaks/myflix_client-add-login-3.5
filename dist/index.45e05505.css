@@ -39,6 +39,10 @@
   text-align: center;
 }
 
+.Fav-button {
+  text-align: left;
+}
+
 * {
   box-sizing: border-box;
 }
