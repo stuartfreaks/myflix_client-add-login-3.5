@@ -276,29 +276,32 @@ export class ProfileView extends React.Component {
         </Row>
 
         {/* FAVORITE MOVIES */}
+        <Card>
+          <Card.Body>
+            <div>
+              <h3 className="favorite-Movies-title">My Favorite Movies:</h3>
+            </div>
 
-        <div>
-          <h3 className="favorite-Movies-title">My Favorite Movies:</h3>
-        </div>
-
-        <Row className="favoriteMovie-col">
-          {FavoriteMovies.map((movie) => (
-            <Col sm={6} md={4} lg={4} key={movie._id}>
-              <div className="favoriteMoviediv">
-                <MovieCard movie={movie} />
-                <Link to="/">
-                  <Button
-                    className="my-4 ml-2"
-                    variant="danger"
-                    onClick={() => handleFavorite(movie._id, 'remove')}
-                  >
-                    Remove
-                  </Button>
-                </Link>
-              </div>
-            </Col>
-          ))}
-        </Row>
+            <Row className="favoriteMovie-col">
+              {FavoriteMovies.map((movie) => (
+                <Col sm={6} md={4} lg={4} key={movie._id}>
+                  <div className="favoriteMoviediv">
+                    <MovieCard movie={movie} />
+                    <Link to="/">
+                      <Button
+                        className="my-4 ml-2"
+                        variant="danger"
+                        onClick={() => handleFavorite(movie._id, 'remove')}
+                      >
+                        Remove
+                      </Button>
+                    </Link>
+                  </div>
+                </Col>
+              ))}
+            </Row>
+          </Card.Body>
+        </Card>
       </Container>
     );
   }
