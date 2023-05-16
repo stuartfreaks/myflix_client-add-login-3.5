@@ -16,12 +16,14 @@ export class MovieCard extends React.Component {
           <Col>
             <CardGroup>
               <Card className="movieCard text-center">
-                <Card.Img
-                  className="cardImage"
-                  variant="top"
-                  src={movie.imageURL}
-                  crossorigin="anonymous"
-                />
+                <Link to={`/movies/${movie._id}`}>
+                  <Card.Img
+                    className="cardImage"
+                    variant="top"
+                    src={movie.imageURL}
+                    crossorigin="anonymous"
+                  />
+                </Link>
                 <Card.Body>
                   <Card.Title>{movie.Title}</Card.Title>
 

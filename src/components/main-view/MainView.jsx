@@ -18,7 +18,7 @@ import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/MovieView';
 import { NavigationBar } from '../navigation-bar/navigation-bar';
 
-import { ProfileView } from '../profile-view/profile-view.scss';
+import ProfileView from '../profile-view/profile-view';
 
 import './main-view.scss';
 import { BrowserRouter } from 'react-router-dom';
@@ -185,25 +185,30 @@ class MainView extends React.Component {
               }}
             />
             <Route
-              path="/users"
-              element={
-                <>
-                  {user ? (
+              path="/users/:user"
+              render={(history) => {
+                if (!user)
+                  return (
                     <Col>
-                      <ProfileView
-                        user={user}
-                        favoriteMovieList={favoriteMovieList}
-                        token={token}
-                        favoriteMovies={favoriteMovie}
-                      />
+                      <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+                      ;
                     </Col>
-                  ) : (
-                    <Navigate to="/login" replace />
-                  )}
-                </>
-              }
+                  );
+                if (movies.length === 0) return <div className="main-view" />;
+                return (
+                  <Col md={8}>
+                    <ProfileView
+                      movies={movies}
+                      user={user}
+                      favoriteMovieList={favoriteMovieList}
+                      token={token}
+                      favoriteMovies={favoriteMovie}
+                      onBackClick={() => history.goBack()}
+                    />
+                  </Col>
+                );
+              }}
             />
-
             <Route
               path="/movies/:movieId"
               render={({ match, history }) => {
@@ -225,7 +230,6 @@ class MainView extends React.Component {
                 );
               }}
             />
-
             <Route
               path="/directors/:name"
               render={({ match, history }) => {
@@ -251,7 +255,6 @@ class MainView extends React.Component {
                 );
               }}
             />
-
             <Route
               path="/genres/:name"
               render={({ match, history }) => {
