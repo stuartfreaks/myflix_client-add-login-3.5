@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import MainView from './components/main-view/MainView';
 import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+
 import Container from 'react-bootstrap/Container';
+import ThemeProvider from 'react-bootstrap/ThemeProvider';
 
 // Import statement to indicate that you need to bundle `./index.scss`
 import './index.scss';
@@ -13,9 +13,14 @@ import './index.scss';
 class MyFlixApplication extends React.Component {
   render() {
     return (
-      <Container>
-        <MainView />
-      </Container>
+      <ThemeProvider
+        breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
+        minBreakpoint="xxs"
+      >
+        <Container>
+          <MainView />
+        </Container>
+      </ThemeProvider>
     );
   }
 }
