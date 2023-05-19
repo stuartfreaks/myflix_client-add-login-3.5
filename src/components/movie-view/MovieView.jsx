@@ -7,13 +7,12 @@ import './movie-view.scss';
 
 export class MovieView extends React.Component {
   render() {
-    const { movie, onBackClick } = this.props;
+    const { movie, onBackClick, handleFavorite } = this.props;
 
     return (
       <div className="movie-view">
-        <Link to={``}>
-          <Button className="Fav-button">Add to Favorites</Button>
-        </Link>
+        <Button onClick={this.handleFavorite}>FAVORITE</Button>
+
         <div className="movie-poster">
           <img src={movie.imageURL} />
         </div>

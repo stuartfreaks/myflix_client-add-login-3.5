@@ -5,6 +5,7 @@ import axios from 'axios';
 import './profile-view.scss';
 import { MovieCard } from '../movie-card/movie-card';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 export class ProfileView extends React.Component {
   constructor() {
@@ -44,7 +45,7 @@ export class ProfileView extends React.Component {
           Username: response.data.username,
           Password: response.data.password,
           Email: response.data.email,
-          Birthday: response.data.birthday,
+          Birthday: moment(response.data.Birthday).format('DD-MM-YYYY'),
           FavoriteMovies: response.data.favoriteMovies,
         });
       })
@@ -62,9 +63,9 @@ export class ProfileView extends React.Component {
       .put(
         `https://fellini-api.onrender.com/users/${username}`,
         {
-          Username: this.state.Username,
-          Password: this.state.Password,
-          Email: this.state.Email,
+          username: this.state.Username,
+          password: this.state.Password,
+          email: this.state.Email,
           Birthday: this.state.Birthday,
         },
         {
@@ -76,7 +77,7 @@ export class ProfileView extends React.Component {
           Username: response.data.Username,
           Password: response.data.Password,
           Email: response.data.Email,
-          Birthday: response.data.Birthday,
+          Birthday: moment(response.data.Birthday).format('DD-MM-YYYY'),
         });
         localStorage.setItem('user', this.state.Username);
         const data = response.data;
