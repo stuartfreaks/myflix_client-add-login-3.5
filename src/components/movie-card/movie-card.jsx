@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import { Button, Card, CardGroup, Container, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import './movie-card.scss';
-
-import { Link } from 'react-router-dom';
 
 export class MovieCard extends React.Component {
   render() {
@@ -17,15 +16,17 @@ export class MovieCard extends React.Component {
           <Col>
             <CardGroup>
               <Card className="movieCard text-center">
-                <Card.Img
-                  className="cardImage"
-                  variant="top"
-                  src={movie.imageURL}
-                  crossorigin="anonymous"
-                />
+                <Link to={`/movies/${movie._id}`}>
+                  <Card.Img
+                    className="cardImage"
+                    variant="top"
+                    src={movie.imageURL}
+                    crossorigin="anonymous"
+                  />
+                </Link>
                 <Card.Body>
                   <Card.Title>{movie.Title}</Card.Title>
-                  <Card.Text>{movie.description}</Card.Text>
+
                   <Link to={`/movies/${movie._id}`}>
                     <Button className="card-button" variant="primary">
                       Details

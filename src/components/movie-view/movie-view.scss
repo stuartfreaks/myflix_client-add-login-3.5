@@ -1,20 +1,33 @@
-.moviesContainer {
-}
-
 .movie-view {
   font-family: 'Didot', sans-serif;
   margin-top: 50px;
   color: white;
 }
 
-.movie-button-div {
+.movie-poster {
   text-align: center;
-  margin: 0 auto;
-  width: 200px;
 }
-.movie-button {
-  align-items: center;
-  margin-top: 20px;
 
+.movie-description {
+  text-align: left;
+  margin: 0 auto;
+}
+.back-button {
+  margin-top: 20px;
+  width: 100px;
   background-color: #1c2d19;
+}
+
+.movie-title {
+  padding-top: 10px;
+  font-size: x-large;
+  text-align: center;
+}
+
+.year {
+  text-align: center;
+}
+
+.Fav-button {
+  text-align: left;
 }
