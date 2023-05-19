@@ -161,15 +161,9 @@ export class ProfileView extends React.Component {
     return (
       <Container className="profile-view">
         <div className="top-elements d-flex flex-row justify-content-end align-items-baseline">
-          <Button
-            className="backProfileButton"
-            variant="danger"
-            onClick={() => {
-              onBackClick();
-            }}
-          >
-            Back
-          </Button>
+          <Link to={`/`}>
+            <Button className="back-button">Back</Button>
+          </Link>
         </div>
 
         <Row>

@@ -10,7 +10,7 @@ export const NavigationBarOut = ({ user, onLoggedOut }) => {
           CINEMA FELLINI
         </Navbar.Brand>
         <Nav className="menu-items">
-          <Nav.Link href={`/register`}>Register</Nav.Link>
+          <Nav.Link href={`/register`}>Sign Up</Nav.Link>
         </Nav>
       </Container>
     </Navbar>

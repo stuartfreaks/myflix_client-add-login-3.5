@@ -17,6 +17,7 @@ import { RegistrationView } from '../RegistrationView/registration-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/MovieView';
 import { NavigationBar } from '../navigation-bar/navigation-bar';
+import { NavigationBarOut } from '../navigation-bar/navigation-bar-out';
 
 import ProfileView from '../profile-view/profile-view';
 
@@ -130,11 +131,24 @@ class MainView extends React.Component {
 
     if (!user) {
       return (
-        <Col md={5}>
-          <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
-          or
-          <RegistrationView />
-        </Col>
+        <BrowserRouter>
+          <Router>
+            <NavigationBarOut
+              user={user}
+              onLoggedOut={this.onLoggedOut}
+              onSearch={(query) => {
+                setViewMovies(
+                  movies.filter((movie) =>
+                    movie.title.toLowerCase().includes(query.toLowerCase())
+                  )
+                );
+              }}
+            />
+            <Col md={5}>
+              <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+            </Col>
+          </Router>
+        </BrowserRouter>
       );
     }
 
@@ -142,18 +156,19 @@ class MainView extends React.Component {
 
     return (
       <BrowserRouter>
-        <NavigationBar
-          user={user}
-          onLoggedOut={this.onLoggedOut}
-          onSearch={(query) => {
-            setViewMovies(
-              movies.filter((movie) =>
-                movie.title.toLowerCase().includes(query.toLowerCase())
-              )
-            );
-          }}
-        />
         <Router>
+          <NavigationBar
+            user={user}
+            onLoggedOut={this.onLoggedOut}
+            onSearch={(query) => {
+              setViewMovies(
+                movies.filter((movie) =>
+                  movie.title.toLowerCase().includes(query.toLowerCase())
+                )
+              );
+            }}
+          />
+
           <Row className="main-view justify-content-md-center">
             <Route
               exact
@@ -173,17 +188,7 @@ class MainView extends React.Component {
                 ));
               }}
             />
-            <Route
-              path="/register"
-              render={() => {
-                if (user) return <Redirect to="/" />;
-                return (
-                  <Col>
-                    <RegistrationView />
-                  </Col>
-                );
-              }}
-            />
+
             <Route
               path="/users/:user"
               render={(history) => {
