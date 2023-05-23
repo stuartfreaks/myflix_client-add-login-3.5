@@ -67,6 +67,10 @@
   display: block;
 }
 
+.form-control {
+  background-color: #fff;
+}
+
 * {
   box-sizing: border-box;
 }

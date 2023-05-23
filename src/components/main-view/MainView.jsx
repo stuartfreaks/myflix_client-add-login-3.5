@@ -69,7 +69,7 @@ class MainView extends React.Component {
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.username);
     this.getMovies(authData.token);
-    // location.reload();
+    window.open('/', '_self');
   }
 
   onLoggedOut() {
@@ -133,20 +133,31 @@ class MainView extends React.Component {
       return (
         <BrowserRouter>
           <Router>
-            <NavigationBarOut
-              user={user}
-              onLoggedOut={this.onLoggedOut}
-              onSearch={(query) => {
-                setViewMovies(
-                  movies.filter((movie) =>
-                    movie.title.toLowerCase().includes(query.toLowerCase())
-                  )
-                );
-              }}
-            />
-            <Col md={5}>
-              <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
-            </Col>
+            <NavigationBarOut />
+            <Row className="main-view justify-content-md-center">
+              <Route
+                exact
+                path="/login"
+                render={() => {
+                  return (
+                    <Col>
+                      <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+                    </Col>
+                  );
+                }}
+              />
+              <Route
+                exact
+                path="/register"
+                render={() => {
+                  return (
+                    <Col>
+                      <RegistrationView />
+                    </Col>
+                  );
+                }}
+              />
+            </Row>
           </Router>
         </BrowserRouter>
       );

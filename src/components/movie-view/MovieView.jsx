@@ -11,7 +11,7 @@ export class MovieView extends React.Component {
 
     return (
       <div className="movie-view">
-        <Button onClick={this.handleFavorite}>FAVORITE</Button>
+        <Button onClick={handleFavorite}>FAVORITE</Button>
 
         <div className="movie-poster">
           <img src={movie.imageURL} />
