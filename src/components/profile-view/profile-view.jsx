@@ -89,26 +89,28 @@ export class ProfileView extends React.Component {
         console.log(error);
       });
   }
-
-  handleFavorite = (movieId, action) => {
-    const { user, favoriteMovies } = this.state;
+  handleFavorite = (movieId, action, e) => {
+    e.preventDefault();
+    // const { user, favoriteMovies } = this.state;
     const accessToken = localStorage.getItem('token');
+    const user = localStorage.getItem('user');
     if (accessToken !== null && user !== null) {
-      // Add MovieID to Favorites
+      // remove MovieID to Favorites
 
       if (action === 'remove') {
-        this.setState({
-          favoriteMovies: favoriteMovies.filter((id) => id !== movieId),
-        });
+        // this.setState({
+        //   favoriteMovies: favoriteMovies.filter((id) => id !== movieId),
+        // });
         axios
           .delete(
-            `https://fellini-api.onrender.com//users/${user}/movies/${movieId}`,
+            `https://fellini-api.onrender.com/users/${user}/movies/${movieId}`,
             {
               headers: { Authorization: `Bearer ${accessToken}` },
             }
           )
           .then((res) => {
-            console.log(`Movie removed from ${user} favorite movies`);
+            alert(`Movie removed from ${user} favorite movies`);
+            window.location.reload(false);
           })
           .catch((err) => {
             console.log(err);
@@ -116,6 +118,7 @@ export class ProfileView extends React.Component {
       }
     }
   };
+
   // Delete A User
   onDeleteUser() {
     const token = localStorage.getItem('token');
@@ -286,7 +289,9 @@ export class ProfileView extends React.Component {
                       <Button
                         className="my-4 ml-2"
                         variant="danger"
-                        onClick={() => handleFavorite(movie._id, 'remove')}
+                        onClick={(e) =>
+                          this.handleFavorite(movie._id, 'remove', e)
+                        }
                       >
                         Remove
                       </Button>

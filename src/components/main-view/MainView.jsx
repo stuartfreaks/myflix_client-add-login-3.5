@@ -81,50 +81,6 @@ class MainView extends React.Component {
     window.open('/', '_self');
   }
 
-  handleFavorite = (movieId, action) => {
-    const { user, favoriteMovies } = this.state;
-    const accessToken = localStorage.getItem('token');
-    if (accessToken !== null && user !== null) {
-      // Add MovieID to Favorites
-      if (action === 'add') {
-        this.setState({ favoriteMovies: [...favoriteMovies, movieId] });
-        axios
-          .post(
-            `https://fellini-api.onrender.com/users/${user}/movies/${movieId}`,
-            {},
-            {
-              headers: { Authorization: `Bearer ${accessToken}` },
-            }
-          )
-          .then((res) => {
-            console.log(`Movie added to ${user} favorite movies`);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-
-        // Remove MovieID from Favorites
-      } else if (action === 'remove') {
-        this.setState({
-          favoriteMovies: favoriteMovies.filter((id) => id !== movieId),
-        });
-        axios
-          .delete(
-            `https://fellini-api.onrender.com/users/${user}/movies/${movieId}`,
-            {
-              headers: { Authorization: `Bearer ${accessToken}` },
-            }
-          )
-          .then((res) => {
-            console.log(`Movie removed from ${user} favorite movies`);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      }
-    }
-  };
-
   render() {
     const { movies, user, favoriteMovieList, token, favoriteMovie } =
       this.state;
